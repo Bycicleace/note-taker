@@ -22,3 +22,5 @@ Elliott Kvamme, 2021
 
 ## Site Link
 [Note Taker](https://cbc-note-taker.herokuapp.com/)
+
+![Site Image](./site.png)
