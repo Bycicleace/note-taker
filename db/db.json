@@ -1,19 +1,9 @@
 {
   "notes": [
     {
-      "title": "Test Title",
-      "text": "Test text",
-      "id": "5bc644e8"
-    },
-    {
-      "title": "Note 1",
-      "text": "First Note",
-      "id": "8e48861d"
-    },
-    {
-      "title": "Note 3",
-      "text": "Third Note",
-      "id": "bef3fde5"
+      "title": "Welcome! (Click Me)",
+      "text": "To get started, click the + icon in the upper right corner. From there, fill out the title and text, then hit the save icon to store.\nTo delete a note, click the trash icon next to the note.\nEnjoy!",
+      "id": "1892e61b"
     }
   ]
 }
