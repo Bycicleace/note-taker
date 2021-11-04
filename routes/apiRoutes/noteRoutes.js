@@ -8,10 +8,34 @@ const {
     validateNote
 } = require("../../lib/notes.js");
 
+// Retrieve all notes
 router.get('/notes', (req, res) => {
     res.json(notes);
 });
 
+// Create or Update note
+router.post('/notes', (req, res) => {
+    // post a new note to the db.json file.
+    if (!validateNote(req.body)) {
+        res.status(400).send('The note is not formatted correctly');
+    } else {
+        // if an ID is supplied and found, update note, else, create a new one.
+        if (req.body.id) {
+            if (findById(req.body.id, notes)) {
+                const note = updateNote(req.body.id, req.body, notes);
+                res.json(note);
+            } else {
+                const note = createNewNote(req.body, notes);
+                res.json(note);
+            }
+        } else {
+            const note = createNewNote(req.body, notes);
+            res.json(note);
+        }   
+    }
+});
+
+// Get specific note
 router.get('/notes/:id', (req, res) => {
     // return note by ID only
     const result = findById(req.params.id, notes);
@@ -22,16 +46,7 @@ router.get('/notes/:id', (req, res) => {
     }
 });
 
-router.post('/notes', (req, res) => {
-    // post a new note to the db.json file.
-    if (!validateNote(req.body)) {
-        res.status(400).send('The note is not formatted correctly');
-    } else {
-        const note = createNewNote(req.body, notes);
-        res.json(note);
-    }
-});
-
+// Delete specific note
 router.delete('/notes/:id', (req, res) => {
     const selectedNote = findById(req.params.id, notes);
     // If the note is located, then proceed
