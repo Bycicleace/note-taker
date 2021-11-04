@@ -19,19 +19,20 @@ router.post('/notes', (req, res) => {
     if (!validateNote(req.body)) {
         res.status(400).send('The note is not formatted correctly');
     } else {
+        // --> Commented out as update is not possible yet. Left for future <--
         // if an ID is supplied and found, update note, else, create a new one.
-        if (req.body.id) {
-            if (findById(req.body.id, notes)) {
-                const note = updateNote(req.body.id, req.body, notes);
-                res.json(note);
-            } else {
-                const note = createNewNote(req.body, notes);
-                res.json(note);
-            }
-        } else {
+        // if (req.body.id) {
+        //     if (findById(req.body.id, notes)) {
+        //         const note = updateNote(req.body.id, req.body, notes);
+        //         res.json(note);
+        //     } else {
+        //         const note = createNewNote(req.body, notes);
+        //         res.json(note);
+        //     }
+        // } else {
             const note = createNewNote(req.body, notes);
             res.json(note);
-        }   
+        // }   
     }
 });
 
